@@ -128,8 +128,8 @@ class CommentList extends Component{
                                 className="d-flex" 
                                 >
                                     <span className="mr-auto">{comment.comment}</span>
-                                    <span className="">{comment.rate===1?'⭐':comment.rate===2?'⭐⭐'
-                                    :comment.rate===3?'⭐⭐⭐':comment.rate===4?'⭐⭐⭐⭐':'⭐⭐⭐⭐⭐'}</span>
+                                    <span className="">{comment.rate=== '1'?'⭐':comment.rate==='2'?'⭐⭐'
+                                    :comment.rate==='3'?'⭐⭐⭐':comment.rate==='4'?'⭐⭐⭐⭐':'⭐⭐⭐⭐⭐'}</span>
                                     <img
                                         className="ml-5 mt-1 deleteBtn"
                                         id= {comment._id}
@@ -152,20 +152,20 @@ class CommentList extends Component{
                                      className="closebtn" 
                                      onClick={()=> this.setState({
                                         ...this.state,
-                                        isEdit:!this.state.isEdit
+                                        isEdit:''
                                     })} 
                                      src="https://img.icons8.com/fluent/48/000000/close-window.png" 
                                      alt="close"/>
                                     </>
                              ) ) 
                             :this.state.comments.map(comment => 
-                                ((!this.state.isEdit)
+                                ((this.state.isEdit !== comment._id)
                                 ?<ListGroup.Item 
                                 className="d-flex" 
                                 >
                                     <span className="mr-auto">{comment.comment}</span>
-                                    <span className="">{comment.rate===1?'⭐':comment.rate===2?'⭐⭐'
-                                    :comment.rate===3?'⭐⭐⭐':comment.rate===4?'⭐⭐⭐⭐':'⭐⭐⭐⭐⭐'}</span>
+                                    <span className="">{comment.rate==='1'?'⭐':comment.rate==='2'?'⭐⭐'
+                                    :comment.rate==='3'?'⭐⭐⭐':comment.rate==='4'?'⭐⭐⭐⭐':'⭐⭐⭐⭐⭐'}</span>
                                     <img
                                         className="ml-5 mt-1 deleteBtn"
                                         id= {comment._id}
@@ -178,7 +178,7 @@ class CommentList extends Component{
                                         id= {comment._id}
                                         onClick={(e)=> (this.setState({
                                             ...this.state,
-                                            isEdit:!this.state.isEdit
+                                            isEdit:e.currentTarget.id
                                         }))}
                                         src="https://img.icons8.com/dusk/64/000000/edit--v2.png" 
                                         alt="edit icon"/>                            
@@ -188,7 +188,7 @@ class CommentList extends Component{
                                     className="closebtn"
                                     onClick={()=> this.setState({
                                         ...this.state,
-                                        isEdit:!this.state.isEdit
+                                        isEdit:''
                                     })} 
                                     src="https://img.icons8.com/fluent/48/000000/close-window.png" 
                                     alt="close"/>

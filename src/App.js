@@ -9,6 +9,7 @@ import MyNav from "./components/MyNav";
 import ShowDetail from './components/ShowDetail'
 import Registration from './components/Registration'
 import RegisterDetails from './components/RegisterDetails'
+import AddMovie from './components/AddMovie'
 
 const App = ()=> {
 
@@ -56,7 +57,7 @@ const App = ()=> {
     <Route path="/" exact render={(routerProps)=> <Movies {...routerProps} id='harry-potter' movieName={search?search:'harry'} movieTitle={search?search:'harry'}/>}/>
       {search?'':
       <>
-      <Route path="/" exact render={(routerProps)=><Movies {...routerProps} id='lotr' movieName='Lord+of+the+rings' movieTitle='Lord of the Rings'/> }/>
+      <Route path="/" exact render={(routerProps)=><Movies {...routerProps} id='lotr' movieName='lord' movieTitle='Lord of the Rings'/> }/>
       <Route path="/" exact render={(routerProps)=> <Movies {...routerProps} id='batman' movieName='Batman' movieTitle='Batman'/> }/>
       <Route path="/" exact render={(routerProps)=> <Movies {...routerProps} id='avengers' movieName='Avengers' movieTitle='Avengers'/>}/>
       </>
@@ -72,6 +73,8 @@ const App = ()=> {
      age={age} address={address} city={city} postal={postal} />}/>
 
     <Route path="/details/:movieID" render={(routerProps) => <ShowDetail {...routerProps} title="hello"/>}/>
+
+    <Route exact path="/newMovie" render={(routerProps)=> <AddMovie {...routerProps} />}/>
     </Router>
      
     </>

@@ -34,9 +34,11 @@ class MyNav extends Component{
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
                 <Link to="/">
-                    <div className={this.props.location.pathname==='/' ? 'nav-link active' : 'nav-link'}>Home</div>
+                    <div className={this.props.location.pathname ==='/' ? 'nav-link active' : 'nav-link'}>Home</div>
                 </Link>
-                <Nav.Link href="#pricing">TV Shows</Nav.Link>
+                <Link to="/newMovie">
+                    <div className={this.props.location.pathname ==='/newMovie' ? 'nav-link active' : 'nav-link'}>Add Movie</div>
+                </Link>
                 <Nav.Link href="#pricing">Movies</Nav.Link>
                 <Nav.Link href="#pricing">Recently Added</Nav.Link>
                 <Nav.Link href="#pricing">MyList</Nav.Link>

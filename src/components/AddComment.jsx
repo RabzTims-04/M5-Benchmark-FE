@@ -2,6 +2,8 @@ import { Component } from 'react'
 import { Form, Col, Button } from 'react-bootstrap'
 import Alerting from './Alerting'
 
+const {REACT_APP_BACKEND_URL} = process.env
+
 class AddComment extends Component{
 
     state={
@@ -14,8 +16,7 @@ class AddComment extends Component{
           isSuccess:false
     }
 
-     url = "https://striveschool-api.herokuapp.com/api/comments/";
-     key= "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI4YTk5YzE2ZWY2MDAwMTVjZWQwNWUiLCJpYXQiOjE2MjI3MTQ3ODAsImV4cCI6MTYyMzkyNDM4MH0.-Wnp1TVPbpihQKGNhWBtiCGVL0J9wSxFlGgsbMfh4CA"
+    url = `${REACT_APP_BACKEND_URL}/medias/${this.props.elementId}/reviews`
 
     inputChange =(e)=>{
         let id=e.target.id
@@ -50,11 +51,7 @@ class AddComment extends Component{
 
     fetchComment = async ()=>{
         try {
-            const response = await fetch(this.url +  this.props.elementId, {      
-                headers: {
-                    "Authorization": this.key
-                }
-              })
+            const response = await fetch(this.url)
 
             const comments = await response.json()
             console.log(comments);
@@ -76,7 +73,6 @@ class AddComment extends Component{
                 method: "POST",
                 body: JSON.stringify(this.state.comment),        
                 headers: {
-                    "Authorization": this.key,
                     "Content-type": "application/json"
                 },
               })

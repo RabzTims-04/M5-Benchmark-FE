@@ -4,6 +4,8 @@ import Alerting from './Alerting'
 import del from "../assets/delete.jpg";
 import EditComment from './EditComment';
 
+const {REACT_APP_BACKEND_URL} = process.env
+
 class CommentList extends Component{
 
     state={
@@ -13,8 +15,7 @@ class CommentList extends Component{
         isEdit:false
     }
 
-     url = "https://striveschool-api.herokuapp.com/api/comments/";
-     key= "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI4YTk5YzE2ZWY2MDAwMTVjZWQwNWUiLCJpYXQiOjE2MjI3MTQ3ODAsImV4cCI6MTYyMzkyNDM4MH0.-Wnp1TVPbpihQKGNhWBtiCGVL0J9wSxFlGgsbMfh4CA"
+    url = `${REACT_APP_BACKEND_URL}/medias/${this.props.elementId}/reviews`
 
      alert =()=>{
         if(this.state.isSuccess){
@@ -47,27 +48,23 @@ class CommentList extends Component{
         this.fetchComments()
     }
 
-    componentDidUpdate =()=>{
+  /*   componentDidUpdate =()=>{
         if(this.props.updatedComments !== this.state.comments){
             this.fetchComments()
         }
         this.alert()
-    }
+    } */
     
     fetchComments = async ()=>{
         try {
-            const response = await fetch(this.url + this.props.elementId, {      
-                headers: {
-                    "Authorization": this.key
-                }
-              })
+            const response = await fetch(`${this.url}`)
 
             const comments = await response.json()
             console.log(comments);
             if(response.ok){
                 this.setState({
                     ...this.state,
-                    comments:comments,
+                    comments:comments.reverse(),
                     isSuccess:false,
                     isError:false,
                 })
@@ -84,12 +81,9 @@ class CommentList extends Component{
     deleteComment = async (e)=>{
 
         try {
-            console.log(e.target.id);
-            const response = await fetch(this.url + e.target.id, {
-                method:'DELETE',      
-                headers: {
-                    "Authorization": this.key
-                }
+            console.log(e.currentTarget.id);
+            const response = await fetch(`${this.url}/${e.currentTarget.id}`, {
+                method:'DELETE'
               })
 
             if(response.ok){
@@ -129,7 +123,7 @@ class CommentList extends Component{
                         ?<p className="mt-3">No Comments Yet</p>
                         :(this.props.updatedComments.length)
                              ?this.props.updatedComments.map(comment =>
-                               ((!this.state.isEdit)
+                               ((this.state.isEdit !== comment._id)
                                 ?<ListGroup.Item 
                                 className="d-flex" 
                                 >
@@ -148,7 +142,7 @@ class CommentList extends Component{
                                         id= {comment._id}
                                         onClick={(e) => (this.setState({
                                             ...this.state,
-                                            isEdit:!this.state.isEdit
+                                            isEdit:e.currentTarget.id
                                         }))}
                                         src="https://img.icons8.com/dusk/64/000000/edit--v2.png" 
                                         alt="edit icon"/>                             

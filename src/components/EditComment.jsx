@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import Alerting from './Alerting'
 
+const {REACT_APP_BACKEND_URL} = process.env
 class EditComment extends Component{
 
     state={
@@ -13,6 +14,8 @@ class EditComment extends Component{
           isError:false,
           isSuccess:false
     }
+
+    url = `${REACT_APP_BACKEND_URL}/medias/${this.props.elementId}/reviews/${this.props.commentId}`
 
     inputChange =(e)=>{
         let id= e.target.id
@@ -48,16 +51,13 @@ class EditComment extends Component{
 
 
     editComment = async (e) =>{
-        const url = 'https://striveschool-api.herokuapp.com/api/comments/' + this.props.commentId
-        const key= "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI4YTk5YzE2ZWY2MDAwMTVjZWQwNWUiLCJpYXQiOjE2MjI3MTQ3ODAsImV4cCI6MTYyMzkyNDM4MH0.-Wnp1TVPbpihQKGNhWBtiCGVL0J9wSxFlGgsbMfh4CA"
         console.log('id',this.props.commentId);
 
             try {
-                const response = await fetch (url,{
+                const response = await fetch (this.url,{
                     method : 'PUT',
                     body: JSON.stringify(this.state.editComment),
                     headers :{
-                        'Authorization' : key,
                         'Content-type' : 'application/json'  
                     }
                 })

@@ -1,16 +1,20 @@
 import {useEffect, useState} from 'react'
 import MovieDetails from './MovieDetails'
 
+const {REACT_APP_BACKEND_URL} = process.env
+
 const ShowDetail =({match})=>{
 
     const [info, setInfo] = useState(null)
     const [comments, setComments] = useState([])
+    
+    const url = `${REACT_APP_BACKEND_URL}/medias`
 
     useEffect(()=>{
         const getMovieData = async ()=>{
             let id= match.params.movieID
             if(id){
-                let response = await fetch('http://www.omdbapi.com/?apikey=5b5bab7&i=' + id)
+                let response = await fetch(`${url}/${id}`)
                 let movieInfo = await response.json()
                 setInfo(movieInfo)
             }
@@ -22,11 +26,7 @@ const ShowDetail =({match})=>{
         const getMovieComments = async ()=>{
             let id= match.params.movieID
             if(id){
-                let response = await fetch('https://striveschool-api.herokuapp.com/api/comments/' + id,{
-                    headers:{
-                        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGI4YTk5YzE2ZWY2MDAwMTVjZWQwNWUiLCJpYXQiOjE2MjI3MTQ3ODAsImV4cCI6MTYyMzkyNDM4MH0.-Wnp1TVPbpihQKGNhWBtiCGVL0J9wSxFlGgsbMfh4CA"
-                    }
-                })
+                let response = await fetch(`${url}/${id}/reviews`)
                 let movieComments = await response.json()
                 setComments(movieComments)
             }

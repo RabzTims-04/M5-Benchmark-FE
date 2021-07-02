@@ -58,8 +58,8 @@ class Movies extends Component{
                    {(!this.state.moviesArr)
                    ?<p>No movies to show</p>
                    :this.state.moviesArr.map((movie)=>           
-                      <div key={movie.imdbID} className ='infinite-row-element position-relative'>
-                       <ModalCarousel Year={movie.Year} imdbID={movie.imdbID} Poster={movie.Poster} Title={movie.Title}/>
+                      <div key={movie._imdbID} className ='infinite-row-element position-relative'>
+                       <ModalCarousel Year={movie.Year} imdbID={movie._imdbID} Poster={movie.Poster} Title={movie.Title}/>
                         </div>
                     )   
                     }

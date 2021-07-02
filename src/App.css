@@ -1,0 +1,7 @@
+.App {
+  text-align: center;
+}
+
+.table-bordered td{
+  border-color: transparent;
+}

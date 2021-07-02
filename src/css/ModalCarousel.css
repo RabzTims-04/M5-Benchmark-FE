@@ -1,0 +1,206 @@
+.modal-content{
+    background-color: rgba(0,0,0,0.6)
+  }
+  
+  .modal-title{
+    color: red;
+  }
+  
+  .close{
+    color: red;
+  }
+
+  .btn-primary{
+    background-color: transparent!important;
+    border-color:transparent;
+    color: white;
+    width:90%;
+    height: 100%;
+    transform: translateX(0px);  
+    transition: 1s all;
+   }
+
+   .btn-primary:hover{
+     
+     border-color: transparent;
+     box-shadow: 2px 0 20px 2px rgba(255, 255, 255,4 );
+     transform: scale(1.09);
+     z-index:2;
+     animation-play-state: paused;
+   }
+
+    .btn-primary:checked{
+    animation-play-state: paused;
+    border-color: transparent;
+   }   
+   
+   .list-group{
+     background-color: transparent;
+     background: transparent;
+     text-align: center;
+   }
+   
+   .list-group-item{
+     background-color: transparent;
+     padding: 0.75rem 0;
+   }
+   
+   label{
+     color: white;
+   }
+
+   .modal-header{
+     border-color: red!important;
+   }
+
+  /*  #modalbtn{
+     background-color: aqua;
+   } */
+
+   .form-control{
+     background-color: transparent;
+     border-color: red;
+     color: white!important;
+   }
+
+   .form-control:hover{
+         -webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  }
+
+   .form-control:focus{
+     background-color: transparent;
+     border-color: red;
+   }
+
+   .form-control:focus-visible{
+    background-color: transparent;
+    border-color: red;
+  }
+
+  #sendBtn:hover{
+    -webkit-box-shadow: inset 4px 4px 15px 0px #000000, 5px 5px 7px 5px rgba(97,97,97,0.42); 
+    box-shadow: inset 4px 4px 15px 0px #000000, 5px 5px 7px 5px rgba(97,97,97,0.42);
+  }
+
+  
+
+.scroller {
+    overflow-x: scroll;
+    scroll-behavior:initial;  
+  }
+  
+  .scroller::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .infinite-row-element {
+    min-width: 200px;
+    padding: 3px;
+  }
+  
+  .imagetransition{
+    transform: translateX(0px);  
+    transition: 1s all;
+    /* cursor: pointer; */
+  }
+  
+  .imagetransition:hover{
+    box-shadow: 2px 0 20px 2px rgba(255, 255, 255,4 );
+    transform: scale(1.09);
+    z-index:2;
+  } 
+  
+  .infinite-row {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    animation-name: slide;  
+    animation-duration: 15s;
+    animation-iteration-count: infinite;   
+  }
+  
+  .infinite-row-element {
+    min-width: 200px;
+    padding: 3px;
+  }
+  
+  .infinite-row:hover{
+    animation-play-state: paused;
+  }
+  
+  @keyframes slide{
+    10%{
+        transform: translateX(0);
+    }
+   15%, 25%{
+        transform: translateX(-150px);
+    }
+   30%, 40%{
+        transform: translateX(-300px);
+    }
+    45%,55%{
+        transform: translateX(-350px);
+    }
+   60%, 80%{
+    transform: translateX(0);
+    }
+  
+    /* 75%,80%{
+        transform: translateX(-750px);
+    } */
+    /* 85%,95%{
+        transform: translateX(0);
+    } */
+  
+  }
+  
+  .image-height{
+    max-height: 18rem;
+  }
+
+  .modal-div{
+    top:0%;
+    left:0;
+    right:0;
+    height: 100%;
+  }
+
+  .deleteBtn{
+    height: 15px;
+    width: 15px;
+  }
+
+  .deleteBtn:hover{
+    height: 18px;
+    width: 18px;
+  }
+
+  option{
+    color: black;
+    background-color: transparent;
+    text-align: center;
+  }
+
+  .alert{
+    color:#0b3515;
+    position:absolute;
+    top:-30%;
+    width: 150%;
+    text-align: center;
+  }
+
+  .modal-img{
+    padding: 0;
+  }
+
+  .border-dark{
+    border-color: transparent;
+  }
+
+  .closebtn{
+    position: absolute;
+    right: 2%;
+    top: -2%;
+    width: 12px;
+  }

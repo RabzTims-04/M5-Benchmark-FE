@@ -1,0 +1,51 @@
+.navbar-logo {
+    width: 100px;
+  }
+
+.navbar{
+  color: white;
+  background-color: rgb(20, 20, 20);
+}
+
+.avatar {
+    width: 30px;
+  }
+
+  .avatar:hover {
+    box-shadow: 2px 0 20px 2px rgba(255, 255, 255,0.3 );
+  }
+
+  .dropdown-menu{
+    background-color: rgb(20, 20, 20);
+    color:white
+  }
+
+  .dropdown-item{
+    background-color: rgb(20, 20, 20);
+    color:white
+  }
+  
+  .dropdown-item:hover{
+    background-color:black;
+    color: white;
+    box-shadow: 2px 0 20px 2px rgba(255, 255, 255,0.15 );
+  }
+
+  .search-input{
+      background-color:rgb(20, 20, 20);
+        -webkit-transition: 0.5s ease-in;
+        -moz-transition: 0.5s ease-in;
+        -o-transition: 0.5s ease-in;
+        transition: 0.5s ease-in;
+  }
+
+  .search-input:hover{
+      color: white;
+      background-color:rgb(20, 20, 20);
+      -webkit-transition: 0.5s ease-in;
+      -moz-transition: 0.5s ease-in;
+      -o-transition: 0.5s ease-in;
+      transition: 0.5s ease-in;
+}
+
+ 

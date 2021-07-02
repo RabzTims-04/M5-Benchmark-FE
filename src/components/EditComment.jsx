@@ -11,8 +11,8 @@ class EditComment extends Component{
             rate: this.props.rate,
             elementId: this.props.elementId
           },
-          isError:false,
-          isSuccess:false
+        isError:false,
+        isSuccess:false
     }
 
     url = `${REACT_APP_BACKEND_URL}/medias/${this.props.elementId}/reviews/${this.props.commentId}`
@@ -20,8 +20,8 @@ class EditComment extends Component{
     inputChange =(e)=>{
         let id= e.target.id
         this.setState({
+            ...this.state,
             editComment:{
-                ...this.state,
                 ...this.state.editComment,
                 [id]:e.target.value
             }

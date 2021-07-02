@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import MovieDetails from './MovieDetails'
 
 const {REACT_APP_BACKEND_URL} = process.env
@@ -20,19 +20,19 @@ const ShowDetail =({match})=>{
             }
         }
         getMovieData()
-    },[match.params.movieID])
+    },[match.params.movieID, url])
 
-    useEffect(()=>{
-        const getMovieComments = async ()=>{
-            let id= match.params.movieID
-            if(id){
-                let response = await fetch(`${url}/${id}/reviews`)
-                let movieComments = await response.json()
-                setComments(movieComments)
-            }
+    const getMovieComments = useCallback(async ()=>{
+        let id= match.params.movieID
+        if(id){
+            let response = await fetch(`${url}/${id}/reviews`)
+            let movieComments = await response.json()
+            setComments(movieComments)
         }
+    },[match.params.movieID,url,setComments])
+    useEffect(()=>{
         getMovieComments()
-    },[match.params.movieID])
+    },[getMovieComments])
 
     return(
         <div>

@@ -2,6 +2,7 @@ import '../css/ModalCarousel.css'
 import { Component } from 'react'
 import ModalCarousel from './ModalCarousel'
 
+const {REACT_APP_BACKEND_URL} = process.env
 class Movies extends Component{
 
 
@@ -20,20 +21,21 @@ class Movies extends Component{
         }
     }
 
+    url = `${REACT_APP_BACKEND_URL}/medias`
+
     fetchData = async ()=>{
 
-        const url='http://www.omdbapi.com/?i=tt3896198&apikey=5b5bab7&s=' + this.props['movieName']
+        const movieUrl= `${this.url}/search?Title=` + this.props.movieName
 
         try {
 
-            let response = await fetch(url)
+            let response = await fetch(movieUrl)
             /* console.log(response); */
             const data = await response.json()
+            console.log('data',data);
            
-            let movies = await data.Search
-            console.log(movies);
             this.setState({
-                moviesArr:movies
+                moviesArr:data
             })
             console.log(this.state.moviesArr);
             

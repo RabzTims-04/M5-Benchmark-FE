@@ -53,7 +53,7 @@ const App = ()=> {
     <MyNav searchValue={newSearch}/>
     < Route exact path="/" component ={Header}/>
     <Container fluid>
-    <Route path="/" exact render={(routerProps)=> <Movies {...routerProps} id='harry-potter' movieName={search?search:'harry%20potter'} movieTitle={search?search:'Harry Potter'}/>}/>
+    <Route path="/" exact render={(routerProps)=> <Movies {...routerProps} id='harry-potter' movieName={search?search:'harry'} movieTitle={search?search:'harry'}/>}/>
       {search?'':
       <>
       <Route path="/" exact render={(routerProps)=><Movies {...routerProps} id='lotr' movieName='Lord+of+the+rings' movieTitle='Lord of the Rings'/> }/>

@@ -68,7 +68,7 @@ class EditComment extends Component{
 
                 if(response.ok){
                     /* this.props.editComment=(await response.json()) */
-                   this.props.editComment= editcomment 
+                   this.props.editComment(editcomment)
                     this.setState({
                         editComment:{
                             comment:'',
